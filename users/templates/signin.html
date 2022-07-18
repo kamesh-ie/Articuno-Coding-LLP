@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="{% static '/css/login.css' %}">
+  <style>
+    #body {
+      background-color: #2d3a5c;
+    }
+
+    .form-control {
+      background-color: white;
+    }
+
+    .card,
+    .card input {
+      background-color: aliceblue;
+    }
+    @media only screen and (min-width:992px) {
+        .set-height{
+            height: 539px;
+        }
+      }
+  </style>
+</head>
+
+
+<div style="min-height: 100vh;" id="body" class="container-md d-flex m-0 p-5 justify-content-center align-items-center">
+  <div class="card mb-3" style="max-width: 1000px;min-height: 535px;">
+    <div class="row g-0">
+      <div class="col-lg-5 d-lg-block">
+        <img src="{% static 'images/image.jpg' %}"  class="set-height img-fluid rounded-start"
+          alt="Loading...">
+      </div>
+      <div class="col-lg-7 p-5">
+        <div class="card-body">
+          <h1 class="display-5">LOGO</h1>
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-floating">
+              <input type="text" class="form-control" name="username" placeholder="Username">
+              <label for="Username">Username</label><br>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" name="password" placeholder="Password">
+              <label for="password">Password</label>
+            </div><br>
+            <div class="d-grid gap-2">
+              <button class="btn" style="background-color: #2d3a5c; color: white;" type="submit">Login</button>
+            </div>
+            <a href="https://google.com" class="btn"><img style="height:50px ;" src="{% static '/images/Google.svg.png' %}" alt=""></a>
+            <div class="my-3">
+              <a class="link-secondary" href="/">Forgot Password?</a><br>
+            </div>
+            <div>
+              <a class="link-dark" href="{% url 'signup' %}">Don't have an account? Register</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

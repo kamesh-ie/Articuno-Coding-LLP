@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <style>
+      #body {
+        background-color: #2d3a5c;
+      }
+  
+      .form-control {
+        background-color: white;
+      }
+  
+      .card,
+      .card input {
+        background-color: aliceblue;
+      }
+      @media only screen and (min-width:992px) {
+        .set-height{
+            height: 600px;
+        }
+      }
+    </style>
+  </head>
+  
+  
+  <div style="min-height: 100vh;" id="body" class="container-md d-flex m-0 p-5 justify-content-center align-items-center">
+    <div class="card mb-3" style="max-width: 1200px;min-height: 600px;">
+      <div class="row g-0">
+        <div class="col-lg-5 d-lg-block">
+          <img src="{% static 'images/image.jpg' %}"  class="set-height img-fluid rounded-start"
+            alt="Loading...">
+        </div>
+        <div class="col-lg-7 p-4">
+          <div class="card-body">
+            <h1 class="display-5">LOGO</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="username" placeholder="Type your name:" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password1" placeholder="..." required>
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" name="password2" placeholder="..." required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn" style="background-color: #2d3a5c; color: white;" type="submit">Register</button>
+                    <a href="{% url 'signin' %}" class="link-dark">Already have an account? Login</a>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
