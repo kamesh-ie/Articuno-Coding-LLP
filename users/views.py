@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import CreateUserForm
+from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 
@@ -15,7 +16,7 @@ def signin(request):
             login(request,user)
             return redirect('/')
         else:
-            print('error')
+            messages.info(request,'Username or Password is incorrect')
     return render(request,'signin.html')
 
 def signup(request):
@@ -23,15 +24,17 @@ def signup(request):
 
     if request.method == 'POST':
         print(request.POST)
+        name = request.POST.get('username')
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,"Succsfully registered"+name)
             return redirect('/')
         else:
             print('error',form.error_messages,form.errors)
     
     context = {
-        'form':form,
+        'form_errors':form.errors,
     }
     
 
@@ -47,3 +50,7 @@ def signout(request):
 def index(request):
 
     return render(request,'index.html')
+
+
+def modals(request):
+    return render(request,'modals.html')

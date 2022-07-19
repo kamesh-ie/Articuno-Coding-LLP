@@ -20,7 +20,7 @@
       }
       @media only screen and (min-width:992px) {
         .set-height{
-            height: 600px;
+            height: 620px;
         }
       }
     </style>
@@ -28,7 +28,7 @@
   
   
   <div style="min-height: 100vh;" id="body" class="container-md d-flex m-0 p-5 justify-content-center align-items-center">
-    <div class="card mb-3" style="max-width: 1200px;min-height: 600px;">
+    <div class="card mb-3" style="max-width: 1220px;height: 620px;">
       <div class="row g-0">
         <div class="col-lg-5 d-lg-block">
           <img src="{% static 'images/image.jpg' %}"  class="set-height img-fluid rounded-start"
@@ -56,8 +56,10 @@
                     <input type="password" class="form-control" name="password2" placeholder="..." required>
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn" style="background-color: #2d3a5c; color: white;" type="submit">Register</button>
-                    <a href="{% url 'signin' %}" class="link-dark">Already have an account? Login</a>
+                    <button class="btn mb-2" style="background-color: #2d3a5c; color: white;" type="submit">Register</button>
+                    {{form_errors}}
+                    <br>
+                    <a href="{% url 'signin' %}" class="text-dark">Already have an account? Login</a>
                 </div>
             </form>
           </div>
@@ -65,7 +67,4 @@
       </div>
     </div>
   </div>
-
-
-
 {% endblock %}
