@@ -8,9 +8,9 @@ cd Articuno-Coding-LLP
 
 pip install -r requirements.txt
 
-pip manage.py migrate
+python manage.py migrate
 
-pip manage.py runserver
+python manage.py runserver
 ```
 
 open your browser and type ` localhost:8000 ` to view the app
